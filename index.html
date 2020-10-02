@@ -16,8 +16,9 @@
       <section>
         <h2>Dev.to Stats</h2>
         <ul>
-          <li><strong>Reactions 👍</strong> <span id="reactions-value"></span></li>
-          <li><strong>Page Views 👀</strong> <span id="views-value"></span></li>
+          <li><strong>👍 Reactions</strong> <span id="reactions-value"></span></li>
+          <li><strong>👀 Page Views</strong> <span id="views-value"></span></li>
+          <li><strong>📝 Articles</strong> <span id="articles-value"></span></li>
         </ul>
       </section>
     </main>
@@ -27,6 +28,7 @@
         const stats = document.querySelector('#stats');
         const reactions = document.querySelector('#reactions-value');
         const views = document.querySelector('#views-value');
+        const articles = document.querySelector('#articles-value');
         const url = 'https://raw.githubusercontent.com/kasuboski/stats/main/stats/dev-to.json';
         fetch(url)
           .then(res => res.json())
@@ -34,6 +36,7 @@
             console.log(data);
             reactions.innerText = data.public_reactions_count;
             views.innerText = data.page_views_count;
+            articles.innerText = data.articles_count;
             stats.style.display = "block";
           })
           .catch(err => {
